@@ -1,5 +1,5 @@
 import {z} from "zod"
-const singin=z.object({
+ export const signinSchema=z.object({
     identifier:z
     .string()
     .min(1, { message: "email is required" })
