@@ -1,3 +1,5 @@
+"use client";
+
 import SignUpForm from '@/components/signupform'
 import React from 'react'
 

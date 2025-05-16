@@ -35,7 +35,7 @@ export default  async function POST(request:NextRequest){
       .where(
          and(
             eq(files.id,parentid),
-            eq(files.userId,userId),
+            eq(files.user_id,userId),
             eq(files.isFolder,true)
          )
       )

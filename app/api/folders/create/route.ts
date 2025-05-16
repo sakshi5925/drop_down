@@ -6,9 +6,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 import {v4} from "uuid"
 
-export default async function POST(request:NextRequest){
+export  async function POST(request:NextRequest){
     try {
-         const userId= await auth();
+         const {userId}= await auth();
             if(!userId){
               return NextResponse.json({error:"unauthorized"},{status:400})
             }
@@ -25,7 +25,7 @@ export default async function POST(request:NextRequest){
       .where(
          and(
             eq(files.id,parent_id),
-            eq(files.userId,userId),
+            eq(files.user_id,userId),
             eq(files.isFolder,true)
          )
       )

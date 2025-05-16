@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
+import type { InferInsertModel } from "drizzle-orm";
 
 
 export async function POST(request:NextRequest){
@@ -27,13 +28,13 @@ export async function POST(request:NextRequest){
     fileUrl:imagekit.fileUrl,
     thumbnailUrl:imagekit.thumbnailUrl,
     user_id:imagekit.user_id,
-    parent_id:null,
+    parent_id:undefined,
     isFolder:false,
     isStarred:false,
     isTrash:false
   }
 
-  const [newfile]=  await db.insert(files).values(filedata).returning();
+ const [newfile] = await db.insert(files).values(filedata).returning();
    return NextResponse.json(newfile)
   
     } catch (error) {

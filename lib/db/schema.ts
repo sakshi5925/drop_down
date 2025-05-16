@@ -1,6 +1,5 @@
-import { pgTable, integer, boolean, uuid, text } from "drizzle-orm/pg-core";
+import { pgTable, integer, boolean, uuid, text, timestamp } from "drizzle-orm/pg-core";
 import { Relation, relations } from "drizzle-orm";
-import { timestamp } from "drizzle-orm/gel-core";
 
 export const files = pgTable("files", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -18,6 +17,7 @@ export const files = pgTable("files", {
   createdAt: timestamp("created_At").notNull().defaultNow(),
   updatedAt: timestamp("Updated_At").notNull().defaultNow(),
 });
+
 
 export const fileRelation = relations(files, ({ one, many }) => ({
   parent: one(files, {

@@ -21,7 +21,7 @@ export default async function PATCH(
         const [file] = await db.select().from(files).where(
             and(
                 eq(files.id, fileId),
-                eq(files.userId, userId)
+                eq(files.user_id, userId)
             )
         )
 
@@ -30,10 +30,10 @@ export default async function PATCH(
 
         }
 
-      const [updatedfiles]= await db.update(files).set({isStarred:! file.isStarred}).where(
+      const updatedfiles= await db.update(files).set({isStarred:! file.isStarred}).where(
             and(
                 eq(files.id, fileId),
-                eq(files.userId, userId)
+                eq(files.user_id, userId)
             )
         ).returning();
 

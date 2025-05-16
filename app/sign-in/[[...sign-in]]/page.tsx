@@ -1,3 +1,5 @@
+"use client";
+
 import SignInForm from '@/components/signinform'
 import React from 'react'
 

@@ -5,7 +5,7 @@ import { and, eq, isNull } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export default async function GET(request:NextRequest){
+export  async function GET(request:NextRequest){
           try {
             const {userId}=await auth();
             if(!userId){
@@ -23,15 +23,15 @@ export default async function GET(request:NextRequest){
             const [filedata]=await db.select().from(files).where(
                 and(
                     eq(files.id,parentid),
-                    eq(files.userId,userId)
+                    eq(files.user_id,userId)
                 )
             )
          }
          else{
            const [filedata]=await db.select().from(files).where(
                 and(
-                    eq(files.userId,userId),
-                    isNull(files.parentid)
+                    eq(files.user_id,userId),
+                    isNull(files.parent_id)
                 )
             )
          }

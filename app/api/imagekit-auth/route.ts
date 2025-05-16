@@ -11,7 +11,7 @@ const imagekit=new ImageKit({
        publicKey: process.env.IMAGEKIT_PUBLIC_KEY ||"",
        urlEndpoint:process.env.IMAGEKIT_END_URL||""
 });
-export async function Get(){
+export async function GET(){
     try {
          const userId= await auth();
     if(!userId){
